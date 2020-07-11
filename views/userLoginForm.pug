@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .backgroundstars
+    .container.pt-5
+      .row.justify-content-md-center
+        .col-md-4.col-8.p-5.clear-background
+          if user
+            h2.text-center.text-white= `You are now logged in as ${user.username}` 
+            .text-center.mt-4
+              a.link.text-white(href='/log-out') Not you ? Log out
+          else
+            h1.text-center Log-in 
+            form(method='POST', action='')
+              .form-group
+                label(for='username') Username :
+                input.form-control(type='text', name='username', placeholder='Username', value=(undefined===user ? '' : user.username))
+              .form-group
+                label(for='password') Password :
+                input.form-control(type='password', name='password', placeholder='Password')
+              .text-center
+                button.btn.red-button.text-center(type='submit') Log in
+            .text-center.mt-4
+              a.link(href='/sign-up') First time ? Sign up
+            .text-center.mt-4
+              if messages.error
+                p.badge.badge-danger= messages.error

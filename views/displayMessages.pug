@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  .backgroundmailbox
+    for message in messages
+      .container.mt-5
+        .row
+          .col-8
+            .honeydew-background.p-2.shadow
+              p.font-weight-bold.pl-2= message.title
+              p.pl-2= message.text
+              if user && user.admin === true
+                .text-right
+                  form(action=`/${message.id}/delete-message`, method='POST')
+                    input(type='hidden', value=message.id name='messageId')
+                    button.btn.btn-outline-danger.btn-sm Delete this message
+        .row
+          .col-8
+            .text-right
+              if user 
+                if user.membership === true 
+                  if message.user
+                    p.font-italic.text-secondary= `Posted by ${message.user.username} aka ${message.user.firstName} ${message.user.lastName} on ${message.formattedDate}`
+                  else
+                    p.font-italic.text-secondary Posted by someone whose account has been deleted
+                else
+                  a.font-italic.text-secondary(href='/join-in') Join in to see who wrote that 
+                  span.font-italic.text-secondary= `- ${message.formattedDate}`
+              else
+                a.font-italic.text-secondary(href='/log-in') Log in to see who wrote that 
+                span.font-italic.text-secondary= `- ${message.formattedDate}`

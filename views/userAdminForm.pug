@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .backgroundstars
+    .container.pt-5
+      .row.justify-content-md-center
+        .col-md-4.col-8.p-5.notsoclear-background
+          if user.admin === true
+            h2.text-center= `You, ${user.username}, are an admin !` 
+          else
+            h1.text-center Become an admin 
+            p.text-center.text-secondary.font-italic Answer correctly and you will be admin. You will be able to delete posts.
+            form(method='POST', action='')
+              .form-group
+                label(for='answer') Ryan started the... ?
+                input.form-control(type='text', name='answer')
+              .text-center
+                button.btn.red-button.text-center(type='submit') Submit
+            .text-center.mt-4
+              a.link(href='/') Too hard ? Too bad, go home.
+            .text-center.mt-4
+              if error
+                p.badge.badge-danger= error
