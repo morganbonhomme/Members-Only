@@ -1,4 +1,5 @@
-require('dotenv').config();
+require('dotenv').config({ path: '/.env' });
+const helmet = require('helmet');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -20,7 +21,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Set up mongostore
 const MongoStore = require('connect-mongo')(session);
-const connection = mongoose.createConnection(process.env.DB_STRING);
+const connection = mongoose.createConnection(process.env.DB_STRING, { useNewUrlParser: true });
 const sessionStore = new MongoStore({ mongooseConnection: connection, collection: 'sessions' });
 
 const indexRouter = require('./routes/index');
@@ -60,6 +61,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(helmet());
 
 // Set up session
 app.use(session({
