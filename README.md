@@ -8,7 +8,7 @@
 
 This project is part of the NodeJS curriculum with [The Odin Project](https://www.theodinproject.com). 
 With this project, I learnt to :
-- Use MongoDB as a database 
+- Use **MongoDB** as a database 
 - Secure passwords with **bcryptjs**
 - Validate & sanitize data 
 - Create a login-form using **passport.js**
