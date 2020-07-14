@@ -21,7 +21,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Set up mongostore
 const MongoStore = require('connect-mongo')(session);
-const connection = mongoose.createConnection(process.env.DB_STRING, { useNewUrlParser: true });
+const connection = mongoose.createConnection(process.env.MONGODB_URI, { useNewUrlParser: true });
 const sessionStore = new MongoStore({ mongooseConnection: connection, collection: 'sessions' });
 
 const indexRouter = require('./routes/index');
