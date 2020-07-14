@@ -7,7 +7,7 @@
 ## Description
 
 This project is part of the NodeJS curriculum with [The Odin Project](https://www.theodinproject.com). 
-With this project, I learnt to :
+With this project, I learnt to:
 - Use **MongoDB** as a database 
 - Secure passwords with **bcryptjs**
 - Validate & sanitize data 
@@ -25,7 +25,7 @@ User | battlestar | theoffice
 Member | tuna | theoffice
 Admin | michaelscarn | theoffice
 
-Users have different permissions
+Users have different permissions:
 - Non user can only view messages
 - Normal user can view and post messages 
 - Member can view, post and see messages'author
