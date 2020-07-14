@@ -27,28 +27,19 @@ const indexRouter = require('./routes/index');
 
 const app = express();
 
-passport.use(
-  new LocalStrategy((username, password, done) => {
-    User.findOne({ username: username }, (err, user) => {
-      if (err) { 
-        return done(err);
-      };
-      if (!user) {
-        return done(null, false, { msg: "Incorrect username" });
-      }
+passport.use(new LocalStrategy((username, password, done) => {
+  User.findOne({ username }, (err, user) => {
+    if (err) { return done(err); };
+    if (!user) { return done(null, false, { message: 'Incorrect username' }); }
+    else {
       bcrypt.compare(password, user.password, (err, res) => {
-        if (res) {
-          // passwords match! log user in
-          return done(null, user)
-        } else {
-          // passwords do not match!
-          return done(null, false, {msg: "Incorrect password"})
-        }
-      })
-      return done(null, user);
-    });
-  })
-);
+        console.log(password, user.password)
+        if (res) { return done(null, user); }
+        else { return done(null, false, { message: 'Incorrect password' }) }
+      });
+    };
+  });
+}));
 
 passport.serializeUser((user, done) => {
   done(null, user.id);

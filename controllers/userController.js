@@ -40,7 +40,7 @@ exports.userSignupPost = [
     const errors = validationResult(req);
 
     // Hash password
-    bcrypt.hash('password', 10, (err, hashedPassword) => {
+    bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
       if (err) { return next(err); }
 
       const user = new User({

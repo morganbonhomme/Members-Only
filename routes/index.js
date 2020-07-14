@@ -18,7 +18,7 @@ router.get('/sign-up', userController.userSignupGet);
 router.post('/sign-up', userController.userSignupPost);
 router.get('/log-in', userController.userLoginGet);
 router.post('/log-in', passport.authenticate('local', {
-  successRedirect: '/create-message',
+  successRedirect: '/',
   failureRedirect: '/log-in',
   failureFlash: true,
 }));
