@@ -23,6 +23,6 @@ block content
             .text-center.mt-4
               a.link(href='/sign-up') First time ? Sign up
             .text-center.mt-4
-            if messages
-              if messages.error
-                p.badge.badge-danger= messages.error
+              if messages
+                if messages.error
+                  p.badge.badge-danger= messages.error

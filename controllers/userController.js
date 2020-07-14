@@ -42,12 +42,17 @@ exports.userSignupPost = [
     // Hash password
     bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
       if (err) { return next(err); }
-
+      let passwordHashed;
+      if (req.body.password === req.body.confirmPassword) {
+        passwordHashed = hashedPassword;
+      } else {
+        passwordHashed = '';
+      }
       const user = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         username: req.body.username,
-        password: hashedPassword,
+        password: passwordHashed,
         membership: false,
       });
       if (!errors.isEmpty()) {

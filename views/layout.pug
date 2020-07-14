@@ -15,13 +15,13 @@ html(lang='en')
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.ml-auto
-          if user && (user.firstName !=='' && user.lastName !=='' && user.username !=='' && user.password !=='' && user.confirmPassword !=='')
+          if user && (user.firstName !=='' && user.lastName !=='' && user.username !=='' && user.password !=='')
             if user.membership === true
               if user.admin === true
               else
                 li.nav-item
                   a.nav-link(href='/become-admin') Become an admin
-            else 
+            else
               li.nav-item
                 a.nav-link(href='/join-in') Join the club
             li.nav-item
