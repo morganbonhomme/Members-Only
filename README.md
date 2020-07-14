@@ -2,7 +2,7 @@
 
 ## Demo
 
-:star:  [Live demo](https://fatidique-croissant-99694.herokuapp.com/)  :star:
+:zap:      [Live demo](https://fatidique-croissant-99694.herokuapp.com/) 
 
 ## Description
 
