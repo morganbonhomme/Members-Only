@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '/.env' });
+require('dotenv').config(hero);
 const helmet = require('helmet');
 const createError = require('http-errors');
 const express = require('express');
@@ -14,7 +14,7 @@ const User = require('./models/user');
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
-const mongoDB = process.env.DB_STRING;
+const mongoDB = 'mongodb://morguy:UTAbd8gtc3Eso8hv@cluster0-shard-00-00.eg8vk.gcp.mongodb.net:27017,cluster0-shard-00-01.eg8vk.gcp.mongodb.net:27017,cluster0-shard-00-02.eg8vk.gcp.mongodb.net:27017/Cluster0?ssl=true&replicaSet=atlas-smi25t-shard-0&authSource=admin&retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
