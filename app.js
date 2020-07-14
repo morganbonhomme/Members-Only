@@ -5,6 +5,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const flash = require('express-flash');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const passport = require('passport');
@@ -54,6 +55,7 @@ passport.deserializeUser((id, done) => {
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.use(flash());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
